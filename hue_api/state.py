@@ -4,12 +4,12 @@ class LightState:
     Don't use this class directly, instead use the methods on the `HueLight` or `HueGroups` classes.
     """
     def __init__(self, state, bind_to=None):
-        self.reachable = state.get('reachable')
         self.light = bind_to
         self.__brightness = state.get('bri')
         self.__hue = state.get('hue')
         self.__saturation = state.get('sat')
         self.__is_on = state.get('on')
+        self.__reachable = state.get('reachable')
 
     @property
     def brightness(self):
@@ -46,6 +46,10 @@ class LightState:
     @property
     def saturation(self):
         return self.__saturation
+        
+    @property
+    def reachable(self):
+        return self.__reachable
 
     @saturation.setter
     def saturation(self, sat):
@@ -68,6 +72,7 @@ class LightState:
             'bri': self.brightness,
             'sat': self.saturation,
             'hue': self.hue,
-            'on': self.is_on
+            'on': self.is_on,
+            'reachable': self.reachable
         }
         return payload
