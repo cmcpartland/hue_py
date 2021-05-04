@@ -28,7 +28,7 @@ class HueLight:
 
     def __str__(self):
         string = f"{self.id} - {self.name}"
-        if not self.state.__reachable:
+        if not self.state.reachable:
             status_string = " (unreachable)"
         else:
             status_string = " (on)" if self.state.is_on else " (off)"
